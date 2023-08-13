@@ -18,7 +18,7 @@ def get_model(ticker, future_steps, interval):
     ticker = ticker #'5253.T' #AMZN'  #'TSLA'
     interval = interval
     future_steps = future_steps
-    SEQ_LEN = 60
+    SEQ_LEN = future_steps
 
     start = date.today() - timedelta(days=7)
     end = date.today()
@@ -54,10 +54,10 @@ def get_model(ticker, future_steps, interval):
 
     model.compile(optimizer=tf.keras.optimizers.Adam(), loss='mse')
 
-    model.fit(X, y, epochs=5, batch_size=32,use_multiprocessing=True,verbose=2)
+    model.fit(X, y, epochs=5, batch_size=32,use_multiprocessing=True,verbose=2,workers=12)
 
     # Save the model
-    model.save('models/'+ticker+'.h5')
+    model.save(r'models\\'+ticker+'.h5')
 
     get_graph(ticker,future_steps,interval)
 
