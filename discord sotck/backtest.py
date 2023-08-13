@@ -47,4 +47,3 @@ def get_graph(ticker,future_steps,interval):
 
     plt.savefig(r'graphs\\'+ticker+'.png')
     #print(ticker)
-
