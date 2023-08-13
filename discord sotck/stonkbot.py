@@ -64,5 +64,5 @@ async def on_message(message):
         else:
             await message.channel.send("\n".join(val))
 
-
-bot.run(token)
+if __name__ == "__main__":
+    bot.run(token)
